@@ -1,0 +1,20 @@
+---
+- name: Add upstream configurations if they exist as conf.d includes
+  template: >
+    src=etc-nginx-confd/upstreams.conf
+    dest=/etc/nginx/conf.d/upstreams.conf
+    owner=root
+    group=root
+    mode=644
+  when: nginx_upstreams is defined
+  notify: restart nginx
+
+- name: If you opt to use a static file to define a conf.d just throw it in files/etc-nginx-confd
+  copy: >
+    content="{{ lookup('file', 'files/' + item) }}\n"
+    dest="/etc/nginx/conf.d/{{ item }}"
+    owner=root
+    group=root
+    mode=644
+  with_items: nginx_confd
+  notify: restart nginx

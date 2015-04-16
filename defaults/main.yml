@@ -12,6 +12,10 @@
 #     template: path/to/template.j2
 #     aliases: []
 #     redirects: []
+#     locations:
+#       /:
+#         try_files: "blah" OR proxy_pass: "blah"
+#         rules: []
 #     ssl:
 #       port: 443
 #       key_name: mykey
@@ -22,6 +26,11 @@
 #       file: foo
 #     append: ''
 #
+
+# nginx_upstreams:
+#   upstream_name:
+#     - http://blah1
+#     - http://blah2
 
 # run as a less privileged user for security reasons.
 nginx_user: www-data
@@ -43,3 +52,5 @@ nginx_service_enabled: yes
 nginx_service_state: started
 # enabled/disabled sites
 nginx_sites: []
+nginx_upstreams: {}
+nginx_confd: []
