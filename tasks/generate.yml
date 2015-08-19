@@ -1,0 +1,15 @@
+---
+
+- name: Generate secure dhparams
+  shell: openssl dhparam -out dhparams.pem 2048
+  args:
+    chdir: /etc/ssl/
+    creates: dhparams.pem
+
+- name: Change perms for dhparams
+  file:
+    state: file
+    path: /etc/ssl/dhparams.pem
+    owner: root
+    group: root
+    mode: 0400

@@ -1,9 +1,11 @@
 ---
 
 - include: install.yml
+- include: generate.yml
 - include: config.yml
 - include: rules.yml
 - include: remove_default.yml
 - include: manage_sites.yml
 - include: manage_confd.yml
 - include: service.yml
+

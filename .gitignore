@@ -3,3 +3,4 @@
 !.git*
 !.travis.yml
 vagrant_*
+test_roles
