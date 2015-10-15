@@ -35,6 +35,10 @@ server {
 
   {% for (location_key, location) in item.locations.iteritems() %}
   location {{ location_key }} {
+    {% if location.root is defined %}
+    root {{ location.root }};
+    {% endif %}
+
     {% if location.proxy_pass is defined %}
     proxy_pass {{ location.proxy_pass }};
     {% elif location.try_files is defined %}
