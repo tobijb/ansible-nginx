@@ -1,6 +1,6 @@
 server {
   server_name {{ item.name }}{% for value in item.aliases|default([]) %} {{ value }}{% endfor %};
-  root /var/www/{{ item.id }}/htdocs;
+  root {{ item.root|default('/var/www/htdocs') }};
 
   # --- listen ----------------------------------------------------------------
 
