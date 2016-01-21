@@ -25,3 +25,5 @@
         auth:
           name: Foo Bar
           file: foobar
+          allow_subnets:
+            - 127.0.0.1/32

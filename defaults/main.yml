@@ -25,6 +25,7 @@
 #     auth:
 #       name: foo
 #       file: foo
+#       allow_subnets: [] # Cidr
 #     append: ''
 #
 

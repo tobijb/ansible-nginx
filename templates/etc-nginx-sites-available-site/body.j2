@@ -27,6 +27,15 @@ server {
   {% if item.auth is defined %}
   # --- auth ------------------------------------------------------------------
 
+  satisfy any;
+
+  {% if item.auth.allow_subnets is defined %}
+    {% for subnet in item.auth.allow_subnets %}
+  allow {{ subnet }};
+    {% endfor %}
+  {% endif %}
+  deny  all;
+
   auth_basic "{{ item.auth.name|default(item.id) }}";
   auth_basic_user_file /etc/htpasswd/{{ item.auth.file|default(item.id) }};
   {% endif %}
